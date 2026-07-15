@@ -1,0 +1,8 @@
+tmp/
+.test-tmp/
+.tmp-test/
+node_modules/
+dist/
+dist-electron/
+release/
+.DS_Store

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="640" viewBox="0 0 1536 640" role="img" aria-labelledby="title desc">
+  <title id="title">Cliploom logo refinements</title>
+  <desc id="desc">Three refined Cliploom logo marks: continuous ribbon, open loop, and woven frames.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#090a13"/>
+      <stop offset="0.55" stop-color="#14162c"/>
+      <stop offset="1" stop-color="#090b15"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#8a79ff"/>
+      <stop offset="1" stop-color="#5742e7"/>
+    </linearGradient>
+    <linearGradient id="violetSoft" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#ddd8ff"/>
+      <stop offset="1" stop-color="#9e91ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="20" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="1536" height="640" fill="url(#bg)"/>
+  <circle cx="300" cy="20" r="230" fill="#624cff" opacity="0.1"/>
+  <circle cx="1370" cy="650" r="310" fill="#356ba7" opacity="0.07"/>
+
+  <text x="72" y="68" fill="#a6aabd" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="700" letter-spacing="3">CLIPLOOM · MARK REFINEMENT</text>
+  <text x="72" y="111" fill="#f7f8fb" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="30" font-weight="720">One idea, three cleaner executions</text>
+  <text x="72" y="141" fill="#858b9e" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15">All three are designed to stay recognizable at the 23px title-bar size.</text>
+
+  <!-- A1 -->
+  <g transform="translate(72 184)" filter="url(#shadow)">
+    <rect width="438" height="384" rx="26" fill="#f8f9fc"/>
+    <text x="28" y="38" fill="#6b5bdc" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="800" letter-spacing="2">A1 · CONTINUOUS RIBBON</text>
+    <g transform="translate(151 66)">
+      <rect width="136" height="136" rx="36" fill="url(#violet)"/>
+      <path d="M34 68c0-18 11-30 27-30 23 0 31 34 46 34 9 0 14-7 14-16 0-10-6-17-15-17-8 0-14 5-20 14L64 88c-6 9-12 14-20 14-9 0-15-7-15-17 0-9 5-16 14-16 15 0 23 29 45 29 11 0 20-6 25-16" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M106 73l18 10-18 10z" fill="#ded9ff"/>
+    </g>
+    <text x="219" y="244" text-anchor="middle" fill="#181a24" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="37" font-weight="780" letter-spacing="-1.5">Cliploom</text>
+    <text x="219" y="273" text-anchor="middle" fill="#737a8b" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">Smooth, dynamic, unmistakably looping.</text>
+    <g transform="translate(28 300)">
+      <rect width="382" height="1" fill="#e3e5eb"/>
+      <rect y="19" width="28" height="28" rx="8" fill="url(#violet)"/>
+      <path d="M7 33c0-4 3-7 7-7 6 0 8 8 12 8" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+      <text x="42" y="38" fill="#555c6c" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="13">Best all-rounder · recommended</text>
+    </g>
+  </g>
+
+  <!-- A2 -->
+  <g transform="translate(549 184)" filter="url(#shadow)">
+    <rect width="438" height="384" rx="26" fill="#f8f9fc"/>
+    <text x="28" y="38" fill="#6b5bdc" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="800" letter-spacing="2">A2 · OPEN LOOP</text>
+    <g transform="translate(151 66)">
+      <rect width="136" height="136" rx="36" fill="#121326"/>
+      <path d="M95 41a40 40 0 1 0 5 49" fill="none" stroke="url(#violetSoft)" stroke-width="14" stroke-linecap="round"/>
+      <path d="M86 61l31 18-31 18z" fill="#fff"/>
+      <circle cx="47" cy="46" r="6" fill="#7c68ff"/>
+    </g>
+    <text x="219" y="244" text-anchor="middle" fill="#181a24" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="37" font-weight="780" letter-spacing="-1.5">Cliploom</text>
+    <text x="219" y="273" text-anchor="middle" fill="#737a8b" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">Minimal, direct, centered on playback.</text>
+    <g transform="translate(28 300)">
+      <rect width="382" height="1" fill="#e3e5eb"/>
+      <rect y="19" width="28" height="28" rx="8" fill="#121326"/>
+      <path d="M19 25a9 9 0 1 0 1 12" fill="none" stroke="#a99cff" stroke-width="3" stroke-linecap="round"/>
+      <text x="42" y="38" fill="#555c6c" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="13">Strongest at very small sizes</text>
+    </g>
+  </g>
+
+  <!-- A3 -->
+  <g transform="translate(1026 184)" filter="url(#shadow)">
+    <rect width="438" height="384" rx="26" fill="#f8f9fc"/>
+    <text x="28" y="38" fill="#6b5bdc" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="800" letter-spacing="2">A3 · WOVEN FRAMES</text>
+    <g transform="translate(151 66)">
+      <rect width="136" height="136" rx="36" fill="url(#violet)"/>
+      <rect x="27" y="37" width="66" height="47" rx="15" fill="none" stroke="#d9d3ff" stroke-width="11"/>
+      <rect x="44" y="54" width="66" height="47" rx="15" fill="none" stroke="#fff" stroke-width="11"/>
+      <path d="M76 65l20 12-20 12z" fill="#5e49e7"/>
+      <path d="M40 83h17" stroke="#7a65f7" stroke-width="11" stroke-linecap="round"/>
+    </g>
+    <text x="219" y="244" text-anchor="middle" fill="#181a24" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="37" font-weight="780" letter-spacing="-1.5">Cliploom</text>
+    <text x="219" y="273" text-anchor="middle" fill="#737a8b" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">Structured, technical, visibly “woven.”</text>
+    <g transform="translate(28 300)">
+      <rect width="382" height="1" fill="#e3e5eb"/>
+      <rect y="19" width="28" height="28" rx="8" fill="url(#violet)"/>
+      <rect x="6" y="26" width="12" height="9" rx="3" fill="none" stroke="#d9d3ff" stroke-width="2.5"/>
+      <rect x="10" y="30" width="12" height="9" rx="3" fill="none" stroke="#fff" stroke-width="2.5"/>
+      <text x="42" y="38" fill="#555c6c" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="13">Most product-oriented and precise</text>
+    </g>
+  </g>
+</svg>

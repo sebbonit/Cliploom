@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="640" viewBox="0 0 1536 640" role="img" aria-labelledby="title desc">
+  <title id="title">Refined Cliploom A3 logo</title>
+  <desc id="desc">A connected two-frame logo shown as an app icon, wordmark lockup, monochrome mark, and small-size specimens.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#090a13"/>
+      <stop offset="0.55" stop-color="#14162c"/>
+      <stop offset="1" stop-color="#090b15"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#8b7aff"/>
+      <stop offset="1" stop-color="#5742e7"/>
+    </linearGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#000" flood-opacity="0.34"/>
+    </filter>
+  </defs>
+
+  <rect width="1536" height="640" fill="url(#bg)"/>
+  <circle cx="260" cy="20" r="240" fill="#624cff" opacity="0.1"/>
+  <circle cx="1390" cy="640" r="310" fill="#356ba7" opacity="0.07"/>
+
+  <text x="72" y="68" fill="#a6aabd" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="700" letter-spacing="3">CLIPLOOM · A3 REFINED</text>
+  <text x="72" y="111" fill="#f7f8fb" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="30" font-weight="720">Two complete frames. Nothing floating.</text>
+  <text x="72" y="141" fill="#858b9e" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15">The overlap carries the “clip + loom” idea without extra symbols or broken geometry.</text>
+
+  <g transform="translate(72 184)" filter="url(#shadow)">
+    <rect width="1392" height="384" rx="28" fill="#f8f9fc"/>
+
+    <!-- App icon -->
+    <g transform="translate(82 58)">
+      <rect width="268" height="268" rx="72" fill="url(#violet)"/>
+      <rect x="52" y="72" width="126" height="92" rx="29" fill="none" stroke="#d8d2ff" stroke-width="24"/>
+      <rect x="90" y="108" width="126" height="92" rx="29" fill="none" stroke="#fff" stroke-width="24"/>
+    </g>
+
+    <text x="410" y="83" fill="#7065d9" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="800" letter-spacing="2">PRIMARY LOCKUP</text>
+    <g transform="translate(410 108)">
+      <rect width="96" height="96" rx="27" fill="url(#violet)"/>
+      <rect x="19" y="27" width="45" height="33" rx="10" fill="none" stroke="#d8d2ff" stroke-width="9"/>
+      <rect x="32" y="40" width="45" height="33" rx="10" fill="none" stroke="#fff" stroke-width="9"/>
+      <text x="121" y="62" fill="#181a24" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="52" font-weight="790" letter-spacing="-2">Cliploom</text>
+      <text x="124" y="88" fill="#737a8b" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">Crafted loops, ready to share.</text>
+    </g>
+
+    <line x1="410" y1="232" x2="1320" y2="232" stroke="#e1e4ea"/>
+
+    <text x="410" y="268" fill="#7065d9" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="800" letter-spacing="2">MONOCHROME</text>
+    <g transform="translate(410 284)">
+      <rect width="70" height="70" rx="20" fill="#181a24"/>
+      <rect x="14" y="20" width="33" height="24" rx="7" fill="none" stroke="#8e95a4" stroke-width="7"/>
+      <rect x="24" y="30" width="33" height="24" rx="7" fill="none" stroke="#fff" stroke-width="7"/>
+    </g>
+
+    <text x="548" y="268" fill="#7065d9" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="800" letter-spacing="2">REAL UI SIZES</text>
+    <g transform="translate(548 294)">
+      <g>
+        <rect width="52" height="52" rx="15" fill="url(#violet)"/>
+        <rect x="10" y="15" width="25" height="18" rx="5" fill="none" stroke="#d8d2ff" stroke-width="5"/>
+        <rect x="18" y="22" width="25" height="18" rx="5" fill="none" stroke="#fff" stroke-width="5"/>
+      </g>
+      <g transform="translate(86 9)">
+        <rect width="34" height="34" rx="10" fill="url(#violet)"/>
+        <rect x="7" y="10" width="16" height="12" rx="4" fill="none" stroke="#d8d2ff" stroke-width="3.5"/>
+        <rect x="12" y="15" width="16" height="12" rx="4" fill="none" stroke="#fff" stroke-width="3.5"/>
+      </g>
+      <g transform="translate(155 14)">
+        <rect width="24" height="24" rx="7" fill="url(#violet)"/>
+        <rect x="5" y="7" width="11" height="8" rx="2.5" fill="none" stroke="#d8d2ff" stroke-width="2.5"/>
+        <rect x="8.5" y="10.5" width="11" height="8" rx="2.5" fill="none" stroke="#fff" stroke-width="2.5"/>
+      </g>
+      <text x="207" y="32" fill="#737a8b" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="13">52px · 34px · 24px</text>
+    </g>
+
+    <g transform="translate(930 266)">
+      <rect width="390" height="82" rx="16" fill="#f0efff"/>
+      <circle cx="34" cy="41" r="5" fill="#6c59e8"/>
+      <text x="55" y="36" fill="#333746" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="13" font-weight="700">Connected geometry</text>
+      <text x="55" y="57" fill="#737a8b" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12">No dots, arrows, or detached play elements.</text>
+    </g>
+  </g>
+</svg>

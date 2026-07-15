@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">Cliploom</title>
+  <defs>
+    <linearGradient id="cliploom-violet" x1="12" y1="8" x2="116" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8B7AFF"/>
+      <stop offset="1" stop-color="#5742E7"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="124" height="124" rx="34" fill="url(#cliploom-violet)"/>
+  <rect x="25" y="35" width="60" height="44" rx="14" fill="none" stroke="#D8D2FF" stroke-width="11"/>
+  <rect x="43" y="52" width="60" height="44" rx="14" fill="none" stroke="#FFFFFF" stroke-width="11"/>
+</svg>

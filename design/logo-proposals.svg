@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="640" viewBox="0 0 1536 640" role="img" aria-labelledby="title desc">
+  <title id="title">Video converter brand proposals</title>
+  <desc id="desc">Three logo and naming concepts: Cliploom, Frameflow, and LumaLoop.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#080a12"/>
+      <stop offset="0.55" stop-color="#12152a"/>
+      <stop offset="1" stop-color="#090b15"/>
+    </linearGradient>
+    <linearGradient id="loom" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#8878ff"/>
+      <stop offset="1" stop-color="#5945e8"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#41d4e7"/>
+      <stop offset="1" stop-color="#5672ff"/>
+    </linearGradient>
+    <linearGradient id="luma" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#ff8c76"/>
+      <stop offset="0.5" stop-color="#a66cff"/>
+      <stop offset="1" stop-color="#6157e8"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="20" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="1536" height="640" fill="url(#bg)"/>
+  <circle cx="340" cy="30" r="230" fill="#654cff" opacity="0.1"/>
+  <circle cx="1340" cy="620" r="300" fill="#2c88a5" opacity="0.08"/>
+
+  <text x="72" y="70" fill="#a6aabd" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="700" letter-spacing="3">BRAND DIRECTIONS</text>
+  <text x="72" y="112" fill="#f6f7fb" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="30" font-weight="720">Choose a name and visual direction</text>
+  <text x="72" y="142" fill="#858b9e" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15">Working-name concepts — trademark and domain checks come after selection.</text>
+
+  <!-- Concept A -->
+  <g transform="translate(72 184)" filter="url(#shadow)">
+    <rect width="438" height="384" rx="26" fill="#f8f9fc"/>
+    <text x="28" y="38" fill="#7065d9" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="800" letter-spacing="2">CONCEPT A · CRAFTED</text>
+    <g transform="translate(151 72)">
+      <rect width="136" height="136" rx="36" fill="url(#loom)"/>
+      <path d="M39 43c0-10 8-18 18-18h30c14 0 25 11 25 25s-11 25-25 25H57c-10 0-18 8-18 18s8 18 18 18h29" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+      <path d="M97 43c0-10-8-18-18-18H61" fill="none" stroke="#d8d3ff" stroke-width="12" stroke-linecap="round" opacity="0.75"/>
+      <path d="M82 82l20 12-20 12z" fill="#fff"/>
+    </g>
+    <text x="219" y="250" text-anchor="middle" fill="#171923" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="37" font-weight="780" letter-spacing="-1.5">Cliploom</text>
+    <text x="219" y="279" text-anchor="middle" fill="#737a8b" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">Crafted loops, ready to share.</text>
+    <line x1="28" y1="313" x2="410" y2="313" stroke="#e3e5eb"/>
+    <text x="28" y="348" fill="#555c6c" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="13">Distinctive · creative · memorable</text>
+  </g>
+
+  <!-- Concept B -->
+  <g transform="translate(549 184)" filter="url(#shadow)">
+    <rect width="438" height="384" rx="26" fill="#f8f9fc"/>
+    <text x="28" y="38" fill="#3b8fad" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="800" letter-spacing="2">CONCEPT B · PROFESSIONAL</text>
+    <g transform="translate(151 72)">
+      <rect width="136" height="136" rx="36" fill="#101527"/>
+      <rect x="27" y="34" width="67" height="51" rx="10" fill="none" stroke="url(#flow)" stroke-width="9"/>
+      <rect x="44" y="51" width="67" height="51" rx="10" fill="none" stroke="#ecfaff" stroke-width="9"/>
+      <path d="M77 61l19 11-19 11z" fill="#55cee5"/>
+      <path d="M28 108h57" stroke="url(#flow)" stroke-width="8" stroke-linecap="round"/>
+      <path d="M95 108h14" stroke="#dffbff" stroke-width="8" stroke-linecap="round"/>
+    </g>
+    <text x="219" y="250" text-anchor="middle" fill="#171923" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="37" font-weight="780" letter-spacing="-1.5">Frameflow</text>
+    <text x="219" y="279" text-anchor="middle" fill="#737a8b" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">Fast conversion. Fine control.</text>
+    <line x1="28" y1="313" x2="410" y2="313" stroke="#e3e5eb"/>
+    <text x="28" y="348" fill="#555c6c" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="13">Clear · precise · product-led</text>
+  </g>
+
+  <!-- Concept C -->
+  <g transform="translate(1026 184)" filter="url(#shadow)">
+    <rect width="438" height="384" rx="26" fill="#f8f9fc"/>
+    <text x="28" y="38" fill="#a0579e" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="800" letter-spacing="2">CONCEPT C · EXPRESSIVE</text>
+    <g transform="translate(151 72)">
+      <rect width="136" height="136" rx="36" fill="#151329"/>
+      <circle cx="68" cy="69" r="38" fill="none" stroke="url(#luma)" stroke-width="13" stroke-linecap="round" stroke-dasharray="198 42" transform="rotate(-35 68 69)"/>
+      <path d="M59 51l31 18-31 18z" fill="#fff"/>
+      <path d="M101 27v17M92.5 35.5h17" stroke="#ffb493" stroke-width="6" stroke-linecap="round"/>
+    </g>
+    <text x="219" y="250" text-anchor="middle" fill="#171923" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="37" font-weight="780" letter-spacing="-1.5">LumaLoop</text>
+    <text x="219" y="279" text-anchor="middle" fill="#737a8b" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">Motion, beautifully compressed.</text>
+    <line x1="28" y1="313" x2="410" y2="313" stroke="#e3e5eb"/>
+    <text x="28" y="348" fill="#555c6c" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="13">Warm · visual · creator-friendly</text>
+  </g>
+</svg>
