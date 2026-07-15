@@ -1,94 +1,119 @@
 <p align="center">
-  <img src="docs/images/cliploom-logo.svg" alt="Cliploom logo" width="96" height="96" />
+  <img src="docs/images/cliploom-logo.svg" alt="Cliploom" width="72" height="72">
 </p>
 
 <h1 align="center">Cliploom</h1>
 
 <p align="center">
-  <strong>Craft polished GIF and WebP loops from screen recordings.</strong>
+  <strong>Turn any recording into a polished, shareable animation.</strong><br>
+  A native macOS app for trimming, previewing, and exporting lightweight GIF and WebP loops — privately, on your machine.
 </p>
 
 <p align="center">
-  Trim, preview, and export lightweight animated media — privately, on your Mac.
+  <img src="docs/images/app-screenshot.png" alt="Cliploom welcome screen" width="920">
 </p>
 
-<p align="center">
-  <img src="docs/images/app-screenshot.png" alt="Cliploom app screenshot" width="900" />
-</p>
+<br>
 
----
+## Why Cliploom
 
-## Features
+Screen recordings are great for demos. Sharing them usually isn’t — large files, awkward formats, and cloud converters that shouldn’t see your work.
 
-- **Local & private** — conversion runs on your machine with FFmpeg; nothing is uploaded
-- **Precise trimming** — set in/out points with a visual timeline and live preview
-- **GIF & WebP export** — export one or both formats in a single pass
-- **Quality presets** — Low Size, Balanced, High Quality, or full custom controls
-- **Polished output** — control FPS, width, colors, quality, and optional corner radius
+Cliploom is a focused desktop tool for that last mile: load a video, trim the moment that matters, tune quality, and export a clean GIF or WebP ready for docs, PRs, Slack, or marketing.
 
-## Tech stack
+Everything stays local. Encoding runs through FFmpeg on your Mac.
 
-| Layer | Tools |
+<br>
+
+## What you can do
+
+| | |
 | --- | --- |
-| Desktop shell | Electron |
-| UI | React + Vite + TypeScript |
-| Encoding | FFmpeg (`ffmpeg-static`, `fluent-ffmpeg`) |
+| **Import** | Drop MOV, MP4, M4V, MKV, AVI, or WEBM — or browse from disk |
+| **Trim** | Set precise in/out points with a visual timeline and live preview |
+| **Preview** | Check the result before you export, so you don’t guess at quality |
+| **Export** | Output GIF, WebP, or both in one pass |
+| **Tune** | Choose Low Size, Balanced, High Quality — or take full custom control |
+| **Polish** | Adjust FPS, width, palette/quality, and optional corner radius |
+
+<br>
+
+## Built for privacy
+
+Cliploom never uploads your footage. Conversion happens entirely on-device using bundled FFmpeg binaries. Ideal for product demos, internal tools, and anything that shouldn’t leave your machine.
+
+<br>
 
 ## Getting started
 
 ### Requirements
 
-- macOS (Apple Silicon builds are configured)
-- Node.js 20+ recommended
+- macOS on Apple Silicon
+- Node.js 20+
 - npm
 
-### Install
+### Install dependencies
 
 ```bash
 npm install
 ```
 
-### Develop
+### Run in development
 
 ```bash
 npm run dev
 ```
 
-Starts Vite for the renderer and launches the Electron app.
+This starts the Vite renderer and launches the Electron shell.
 
-### Production build
+### Build & run locally
 
 ```bash
 npm run build
 npm start
 ```
 
-### Package macOS app
+### Package a macOS release
 
 ```bash
 npm run dist:mac
 ```
 
-Artifacts are written to `release/`.
+Signed packaging artifacts are written to `release/` (DMG and ZIP for `arm64`).
 
-## Project structure
+<br>
+
+## Architecture
 
 ```text
-├── electron/          # Main process, FFmpeg conversion, IPC
-├── shared/            # Shared types, presets, trim helpers
-├── src/renderer/      # React UI
-├── build/             # App icons for packaging
-└── docs/images/       # README brand assets & screenshots
+cliploom/
+├── electron/        Main process — media probing, FFmpeg conversion, IPC
+├── shared/          Shared types, quality presets, trim helpers
+├── src/renderer/    React UI — landing, workspace, timeline, export controls
+├── build/           App icons for electron-builder
+└── docs/images/     README media
 ```
 
-## Brand assets
-
-| Asset | Path |
+| Layer | Responsibility |
 | --- | --- |
-| Logo mark | [`docs/images/cliploom-logo.svg`](docs/images/cliploom-logo.svg) |
-| App icon | [`docs/images/cliploom-icon.png`](docs/images/cliploom-icon.png) |
-| App screenshot | [`docs/images/app-screenshot.png`](docs/images/app-screenshot.png) |
+| **Electron main** | File dialogs, `ffprobe` metadata, conversion pipeline, progress events |
+| **Preload bridge** | Typed `window.api` surface between UI and main |
+| **React renderer** | Workspace UX, timeline trim, settings, export summary |
+| **Shared module** | Presets and types used by both processes |
+
+<br>
+
+## Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Hot-reload UI + Electron |
+| `npm run build` | Compile main process and production renderer |
+| `npm start` | Build, then launch the packaged entrypoint |
+| `npm run dist:mac` | Produce macOS DMG/ZIP via electron-builder |
+
+<br>
 
 ## License
 
-Private project — all rights reserved.
+Proprietary. All rights reserved.
