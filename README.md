@@ -13,11 +13,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/images/app-screenshot.svg" alt="Cliploom app screenshot" width="900" />
-</p>
-
-<p align="center">
-  <em>Replace <code>docs/images/app-screenshot.svg</code> with a real app screenshot when ready.</em>
+  <img src="docs/images/app-screenshot.png" alt="Cliploom app screenshot" width="900" />
 </p>
 
 ---
@@ -91,7 +87,7 @@ Artifacts are written to `release/`.
 | --- | --- |
 | Logo mark | [`docs/images/cliploom-logo.svg`](docs/images/cliploom-logo.svg) |
 | App icon | [`docs/images/cliploom-icon.png`](docs/images/cliploom-icon.png) |
-| App screenshot | [`docs/images/app-screenshot.svg`](docs/images/app-screenshot.svg) _(placeholder)_ |
+| App screenshot | [`docs/images/app-screenshot.png`](docs/images/app-screenshot.png) |
 
 ## License
 
