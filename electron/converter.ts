@@ -2,7 +2,6 @@ import ffmpeg from 'fluent-ffmpeg';
 import path from 'path';
 import type { PresetConfig } from '../shared/presets.js';
 import type { ResolvedTrimRange } from '../shared/trim.js';
-import { fileExists } from './ffmpeg.js';
 import { applyTrimToCommand } from './trimOptions.js';
 import { buildVideoFilter, hasRoundedCorners } from './videoFilters.js';
 
@@ -45,52 +44,19 @@ async function convertToGif(
   const paletteGen = `palettegen=max_colors=${options.gifMaxColors}:stats_mode=diff:reserve_transparent=1`;
   const paletteUse = `paletteuse=dither=bayer:bayer_scale=${options.gifQuality}:diff_mode=rectangle`;
 
+  // Single-pass filter graph keeps seek/duration on the video input.
+  // A two-pass palette file would make seekInput attach to the palette instead.
   onProgress?.('Encoding GIF', 10);
 
-  if (hasRoundedCorners(options.cornerRadius)) {
-    await runFfmpeg(
-      applyTrimToCommand(
-        ffmpeg(inputPath)
-          .outputOptions(['-y', '-loop', '0'])
-          .complexFilter([
-            `[0:v]${videoFilter}[v]`,
-            `[v]split[v1][v2]`,
-            `[v1]${paletteGen}[p]`,
-            `[v2][p]${paletteUse}`,
-          ])
-          .output(outputPath),
-        trim,
-        videoDuration,
-      ),
-      'Encoding GIF',
-      onProgress,
-    );
-    return;
-  }
-
-  const palettePath = `${outputPath}.palette.png`;
-
   await runFfmpeg(
     applyTrimToCommand(
       ffmpeg(inputPath)
-        .outputOptions(['-y'])
-        .videoFilters(`${videoFilter},${paletteGen}`)
-        .output(palettePath),
-      trim,
-      videoDuration,
-    ),
-    'Generating color palette',
-    onProgress,
-  );
-
-  await runFfmpeg(
-    applyTrimToCommand(
-      ffmpeg(inputPath)
-        .input(palettePath)
         .outputOptions(['-y', '-loop', '0'])
         .complexFilter([
-          `[0:v]${videoFilter}[scaled]`,
-          `[scaled][1:v]${paletteUse}`,
+          `[0:v]${videoFilter}[v]`,
+          `[v]split[v1][v2]`,
+          `[v1]${paletteGen}[p]`,
+          `[v2][p]${paletteUse}`,
         ])
         .output(outputPath),
       trim,
@@ -99,11 +65,6 @@ async function convertToGif(
     'Encoding GIF',
     onProgress,
   );
-
-  if (await fileExists(palettePath)) {
-    const { unlink } = await import('fs/promises');
-    await unlink(palettePath);
-  }
 }
 
 async function convertToWebp(
