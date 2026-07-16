@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Turn any recording into a polished, shareable animation.</strong><br>
-  A native macOS app for trimming, previewing, and exporting lightweight GIF and WebP loops — privately, on your machine.
+  A macOS Electron app for trimming, previewing, and exporting lightweight GIF and WebP loops — privately, on your machine.
 </p>
 
 <p align="center">
