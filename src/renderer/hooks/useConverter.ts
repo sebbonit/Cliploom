@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { PRESET_CONFIGS } from '../../../shared/presets';
 import type {
   ConversionProgress,
   ConversionResponse,
@@ -35,15 +36,26 @@ function getInitialSettings(fallback: ConversionSettings): ConversionSettings {
     if (!stored) return fallback;
 
     const parsed = JSON.parse(stored) as Partial<ConversionSettings>;
-    return {
+    const merged: ConversionSettings = {
       ...fallback,
       ...parsed,
       formats: Array.isArray(parsed.formats) && parsed.formats.length
-        ? parsed.formats
+        ? parsed.formats.filter((format): format is ConversionSettings['formats'][number] =>
+            format === 'gif' || format === 'webp' || format === 'mp4',
+          )
         : fallback.formats,
       startTime: 0,
       endTime: null,
     };
+
+    if (!merged.formats.length) merged.formats = fallback.formats;
+
+    // Older saved settings predate MP4 / videoCrf — fill from the active preset.
+    if (typeof parsed.videoCrf !== 'number' && merged.preset !== 'custom') {
+      merged.videoCrf = PRESET_CONFIGS[merged.preset].videoCrf;
+    }
+
+    return merged;
   } catch {
     return fallback;
   }

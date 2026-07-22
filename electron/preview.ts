@@ -5,9 +5,7 @@ import { getEncodingOptions } from '../shared/presets.js';
 import { resolveTrimRange } from '../shared/trim.js';
 import type { ConversionSettings, OutputFormat } from '../shared/types.js';
 import { convertVideo } from './converter.js';
-import { fileExists, probeVideo } from './ffmpeg.js';
-import { applyTrimToCommand } from './trimOptions.js';
-import { buildVideoFilter } from './videoFilters.js';
+import { probeVideo } from './ffmpeg.js';
 
 function runFfmpeg(command: ffmpeg.FfmpegCommand): Promise<void> {
   return new Promise((resolve, reject) => {
@@ -25,7 +23,7 @@ export async function extractThumbnail(
   await runFfmpeg(
     ffmpeg(inputPath)
       .outputOptions(['-y', '-frames:v', '1', '-q:v', '2'])
-      .videoFilters(`scale=${width}:-1:flags=lanczos`)
+      .videoFilters(`scale=${width}:-1:flags=lanczos+accurate_rnd+full_chroma_int`)
       .output(outputPath),
   );
 
@@ -40,38 +38,28 @@ export async function generatePreviewClip(
   durationSeconds = 2.5,
 ): Promise<string> {
   const baseName = `preview-${randomUUID()}`;
-  const trimmedInput = path.join(tempDir, `${baseName}-trim.mp4`);
-  const encoding = getEncodingOptions(settings);
   const metadata = await probeVideo(inputPath);
+  const videoStream = metadata.streams.find((stream) => stream.codec_type === 'video');
+  const encoding = getEncodingOptions(settings, videoStream?.width);
   const videoDuration = metadata.format.duration ?? 0;
   const trim = resolveTrimRange(settings.startTime, settings.endTime, videoDuration);
   const previewDuration = Math.min(durationSeconds, trim.duration);
+  const previewTrim = {
+    start: trim.start,
+    end: trim.start + previewDuration,
+    duration: previewDuration,
+  };
 
-  await runFfmpeg(
-    applyTrimToCommand(
-      ffmpeg(inputPath)
-        .outputOptions(['-y', '-an'])
-        .videoFilters(buildVideoFilter(encoding.fps, encoding.width, 0))
-        .output(trimmedInput),
-      { ...trim, duration: previewDuration },
-      videoDuration,
-    ),
-  );
-
+  // Encode straight from the source trim — avoids a soft intermediate re-encode.
   const results = await convertVideo(
-    trimmedInput,
+    inputPath,
     tempDir,
     baseName,
     [format],
     encoding,
-    { start: 0, end: previewDuration, duration: previewDuration },
-    previewDuration,
+    previewTrim,
+    videoDuration,
   );
-
-  if (await fileExists(trimmedInput)) {
-    const { unlink } = await import('fs/promises');
-    await unlink(trimmedInput);
-  }
 
   return results[0].outputPath;
 }

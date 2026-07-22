@@ -14,7 +14,8 @@ function buildAlphaExpression(radius: number): string {
 }
 
 export function buildScaleFilter(fps: number, width: number): string {
-  return `fps=${fps},scale=${width}:-2:flags=lanczos,setsar=1`;
+  // accurate_rnd + full_chroma_int keep text/UI edges cleaner when downscaling.
+  return `fps=${fps},scale=${width}:-2:flags=lanczos+accurate_rnd+full_chroma_int,setsar=1`;
 }
 
 export function buildCornerRadiusFilter(radius: number): string {

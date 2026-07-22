@@ -3,6 +3,7 @@ import { resolveTrimRange } from '../../../shared/trim';
 import type { ConversionSettings, OutputFormat } from '../../../shared/types';
 import { formatDuration } from '../utils/format';
 import { isObjectUrl, resolveMediaSrc } from '../utils/media';
+import { OutputMedia } from './OutputMedia';
 import { MaximizePreviewButton, PreviewLightbox } from './PreviewLightbox';
 
 interface SettingsPreviewProps {
@@ -105,7 +106,12 @@ export function SettingsPreview({ videoPath, settings, videoDuration, disabled }
 
       {previewSrc ? (
         <div className="preview-media-wrap">
-          <img className="preview-media output-preview" src={previewSrc} alt="Output preview" />
+          <OutputMedia
+            className="preview-media output-preview"
+            src={previewSrc}
+            format={format}
+            alt="Output preview"
+          />
           <MaximizePreviewButton onClick={() => setIsMaximized(true)} />
         </div>
       ) : (
@@ -117,6 +123,7 @@ export function SettingsPreview({ videoPath, settings, videoDuration, disabled }
         <PreviewLightbox
           src={previewSrc}
           alt="Output preview"
+          format={format}
           label={`Output preview · ${format.toUpperCase()}`}
           onClose={() => setIsMaximized(false)}
         />

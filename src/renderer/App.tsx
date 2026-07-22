@@ -55,8 +55,8 @@ export function App() {
                 <span className="eyebrow">Animated media, made simple</span>
                 <h1>Turn any recording into a polished, shareable animation.</h1>
                 <p>
-                  Trim, preview, and export lightweight GIF or WebP files with precise
-                  control over quality.
+                  Trim, preview, and export lightweight GIF, WebP, or compact MP4
+                  with precise control over quality and file size.
                 </p>
               </div>
               <VideoDropZone
@@ -68,7 +68,7 @@ export function App() {
               <div className="feature-row" aria-label="Supported features">
                 <span><i className="feature-check">✓</i> Private &amp; local</span>
                 <span><i className="feature-check">✓</i> Precise trimming</span>
-                <span><i className="feature-check">✓</i> GIF &amp; WebP</span>
+                <span><i className="feature-check">✓</i> GIF, WebP &amp; MP4</span>
               </div>
             </LiquidGlassPanel>
           </LandingExperience>
@@ -139,7 +139,7 @@ export function App() {
                   onPick={pickOutputDir}
                 />
 
-                <ExportSummary video={video} settings={settings} />
+                <ExportSummary video={video} settings={settings} enabled={!isConverting} />
               </div>
 
               <div className="export-actions">

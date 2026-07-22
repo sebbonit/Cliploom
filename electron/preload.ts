@@ -6,6 +6,8 @@ import type {
   MediaSrcPayload,
   PreviewRequest,
   PreviewResponse,
+  SizeEstimateRequest,
+  SizeEstimateResponse,
   VideoMetadata,
 } from '../shared/types.js';
 
@@ -22,6 +24,8 @@ contextBridge.exposeInMainWorld('api', {
     ipcRenderer.invoke('video:thumbnail', filePath, width),
   generatePreview: (request: PreviewRequest): Promise<PreviewResponse> =>
     ipcRenderer.invoke('video:preview', request),
+  estimateSizes: (request: SizeEstimateRequest): Promise<SizeEstimateResponse> =>
+    ipcRenderer.invoke('video:estimate-sizes', request),
   showInFolder: (filePath: string): Promise<void> =>
     ipcRenderer.invoke('shell:show-in-folder', filePath),
   onProgress: (callback: (progress: ConversionProgress) => void) => {

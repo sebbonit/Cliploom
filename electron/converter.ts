@@ -1,11 +1,10 @@
 import ffmpeg from 'fluent-ffmpeg';
 import path from 'path';
 import type { PresetConfig } from '../shared/presets.js';
+import type { OutputFormat } from '../shared/types.js';
 import type { ResolvedTrimRange } from '../shared/trim.js';
 import { applyTrimToCommand } from './trimOptions.js';
 import { buildVideoFilter, hasRoundedCorners } from './videoFilters.js';
-
-export type OutputFormat = 'gif' | 'webp';
 
 export interface ConversionResult {
   format: OutputFormat;
@@ -117,6 +116,57 @@ async function convertToWebp(
   );
 }
 
+async function convertToMp4(
+  inputPath: string,
+  outputPath: string,
+  options: PresetConfig,
+  trim: ResolvedTrimRange,
+  videoDuration: number,
+  onProgress?: ProgressCallback,
+): Promise<void> {
+  // MP4 has no alpha — skip rounded corners used by GIF/WebP.
+  const videoFilter = buildVideoFilter(options.fps, options.width, 0);
+
+  onProgress?.('Encoding MP4', 10);
+
+  await runFfmpeg(
+    applyTrimToCommand(
+      ffmpeg(inputPath)
+        .outputOptions([
+          '-y',
+          '-map',
+          '0:v:0',
+          '-map',
+          '0:a:0?',
+          '-c:v',
+          'libx264',
+          '-crf',
+          String(options.videoCrf),
+          '-preset',
+          options.x264Preset,
+          '-tune',
+          'animation',
+          '-profile:v',
+          'high',
+          '-pix_fmt',
+          'yuv420p',
+          '-c:a',
+          'aac',
+          '-b:a',
+          String(options.audioBitrate),
+          '-movflags',
+          '+faststart',
+        ])
+        .videoFilters(videoFilter)
+        .output(outputPath),
+      trim,
+      videoDuration,
+    ),
+    'Encoding MP4',
+    onProgress,
+  );
+}
+
 export async function convertVideo(
   inputPath: string,
   outputDir: string,
@@ -142,8 +192,10 @@ export async function convertVideo(
 
     if (format === 'gif') {
       await convertToGif(inputPath, outputPath, options, trim, videoDuration, reportProgress);
-    } else {
+    } else if (format === 'webp') {
       await convertToWebp(inputPath, outputPath, options, trim, videoDuration, reportProgress);
+    } else {
+      await convertToMp4(inputPath, outputPath, options, trim, videoDuration, reportProgress);
     }
 
     results.push({ format, outputPath });

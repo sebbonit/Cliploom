@@ -1,5 +1,6 @@
 import { applyPreset } from '../../../shared/presets';
 import type { ConversionSettings, OutputFormat, QualityPreset } from '../../../shared/types';
+import { crfToQualityPercent, qualityPercentToCrf } from '../../../shared/videoQuality';
 import { PresetSelector } from './PresetSelector';
 
 interface FormatPickerProps {
@@ -11,6 +12,7 @@ interface FormatPickerProps {
 const OPTIONS: { value: OutputFormat; label: string; hint: string; meta: string }[] = [
   { value: 'gif', label: 'GIF', hint: 'Universal', meta: 'Best compatibility' },
   { value: 'webp', label: 'WebP', hint: 'Efficient', meta: 'Smaller, sharper' },
+  { value: 'mp4', label: 'MP4', hint: 'Compact', meta: 'Smallest video' },
 ];
 
 export function FormatPicker({ formats, disabled, onChange }: FormatPickerProps) {
@@ -27,7 +29,7 @@ export function FormatPicker({ formats, disabled, onChange }: FormatPickerProps)
   return (
     <section className="panel">
       <h2>Output</h2>
-      <p className="panel-description">Choose one or both formats.</p>
+      <p className="panel-description">Choose one or more formats.</p>
       <div className="format-grid">
         {OPTIONS.map((option) => (
           <button
@@ -71,6 +73,11 @@ export function QualityPanel({
     onChange(applyPreset(preset, settings));
   };
 
+  const showGif = settings.formats.includes('gif');
+  const showWebp = settings.formats.includes('webp');
+  const showMp4 = settings.formats.includes('mp4');
+  const showCorners = showGif || showWebp;
+
   return (
     <section className="panel">
       <h2>Quality</h2>
@@ -90,7 +97,7 @@ export function QualityPanel({
         <input
           type="range"
           min={5}
-          max={30}
+          max={60}
           value={settings.fps}
           onChange={(e) => onChange(markCustom({ fps: Number(e.target.value) }))}
           disabled={disabled}
@@ -105,15 +112,16 @@ export function QualityPanel({
         <input
           type="range"
           min={320}
-          max={1280}
+          max={1920}
           step={40}
           value={settings.width}
           onChange={(e) => onChange(markCustom({ width: Number(e.target.value) }))}
           disabled={disabled}
         />
+        <span className="slider-hint">Capped to source resolution (no upscaling)</span>
       </label>
 
-      {settings.formats.includes('gif') && (
+      {showGif && (
         <label className="slider-field">
           <div className="slider-header">
             <span>GIF dithering</span>
@@ -133,7 +141,7 @@ export function QualityPanel({
         </label>
       )}
 
-      {settings.formats.includes('webp') && (
+      {showWebp && (
         <label className="slider-field">
           <div className="slider-header">
             <span>WebP quality</span>
@@ -152,24 +160,46 @@ export function QualityPanel({
         </label>
       )}
 
-      <label className="slider-field">
-        <div className="slider-header">
-          <span>Corner radius</span>
-          <strong>{settings.cornerRadius === 0 ? 'Off' : `${settings.cornerRadius}px`}</strong>
-        </div>
-        <input
-          type="range"
-          min={0}
-          max={48}
-          step={4}
-          value={settings.cornerRadius}
-          onChange={(e) =>
-            onChange(markCustom({ cornerRadius: Number(e.target.value) }))
-          }
-          disabled={disabled}
-        />
-        <span className="slider-hint">Rounds GIF/WebP corners with transparency</span>
-      </label>
+      {showMp4 && (
+        <label className="slider-field">
+          <div className="slider-header">
+            <span>MP4 quality</span>
+            <strong>{crfToQualityPercent(settings.videoCrf)}%</strong>
+          </div>
+          <input
+            type="range"
+            min={0}
+            max={100}
+            value={crfToQualityPercent(settings.videoCrf)}
+            onChange={(e) =>
+              onChange(markCustom({ videoCrf: qualityPercentToCrf(Number(e.target.value)) }))
+            }
+            disabled={disabled}
+          />
+          <span className="slider-hint">Higher = sharper (uses slower, cleaner encode)</span>
+        </label>
+      )}
+
+      {showCorners && (
+        <label className="slider-field">
+          <div className="slider-header">
+            <span>Corner radius</span>
+            <strong>{settings.cornerRadius === 0 ? 'Off' : `${settings.cornerRadius}px`}</strong>
+          </div>
+          <input
+            type="range"
+            min={0}
+            max={48}
+            step={4}
+            value={settings.cornerRadius}
+            onChange={(e) =>
+              onChange(markCustom({ cornerRadius: Number(e.target.value) }))
+            }
+            disabled={disabled}
+          />
+          <span className="slider-hint">Rounds GIF/WebP corners with transparency</span>
+        </label>
+      )}
     </section>
   );
 }

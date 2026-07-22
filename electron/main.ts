@@ -3,8 +3,14 @@ import path from 'path';
 import { readFile, stat } from 'fs/promises';
 import { getEncodingOptions } from '../shared/presets.js';
 import { resolveTrimRange } from '../shared/trim.js';
-import type { ConversionRequest, MediaSrcPayload, PreviewRequest } from '../shared/types.js';
+import type {
+  ConversionRequest,
+  MediaSrcPayload,
+  PreviewRequest,
+  SizeEstimateRequest,
+} from '../shared/types.js';
 import { convertVideo } from './converter.js';
+import { estimateConversionSizes } from './estimate.js';
 import { probeVideo } from './ffmpeg.js';
 import {
   getMimeType,
@@ -117,12 +123,22 @@ ipcMain.handle('video:preview', async (_event, request: PreviewRequest) => {
   };
 });
 
+ipcMain.handle('video:estimate-sizes', async (_event, request: SizeEstimateRequest) => {
+  const estimates = await estimateConversionSizes(
+    request.inputPath,
+    app.getPath('temp'),
+    request.settings,
+  );
+  return { estimates };
+});
+
 ipcMain.handle('video:convert', async (event, request: ConversionRequest) => {
   const { inputPath, settings } = request;
   const outputDir = settings.outputDir || path.dirname(inputPath);
   const baseName = path.parse(inputPath).name;
-  const encoding = getEncodingOptions(settings);
   const metadata = await probeVideo(inputPath);
+  const videoStream = metadata.streams.find((stream) => stream.codec_type === 'video');
+  const encoding = getEncodingOptions(settings, videoStream?.width);
   const videoDuration = metadata.format.duration ?? 0;
   const trim = resolveTrimRange(settings.startTime, settings.endTime, videoDuration);
 

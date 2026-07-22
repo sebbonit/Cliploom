@@ -1,6 +1,7 @@
 import type { ConvertedFile } from '../../../shared/types';
 import { useMediaUrl } from '../hooks/useMediaUrl';
 import { formatBytes } from '../utils/format';
+import { OutputMedia } from './OutputMedia';
 
 interface ResultPanelProps {
   outputs: ConvertedFile[];
@@ -14,9 +15,10 @@ function OutputPreview({ file }: { file: ConvertedFile }) {
   if (!src) return null;
 
   return (
-    <img
+    <OutputMedia
       className="output-preview-image"
       src={src}
+      format={file.format}
       alt={`${file.format} output`}
     />
   );

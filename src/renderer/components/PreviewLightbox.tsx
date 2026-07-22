@@ -1,13 +1,16 @@
 import { useEffect } from 'react';
+import type { OutputFormat } from '../../../shared/types';
+import { OutputMedia } from './OutputMedia';
 
 interface PreviewLightboxProps {
   src: string;
   alt: string;
+  format: OutputFormat;
   label?: string;
   onClose: () => void;
 }
 
-export function PreviewLightbox({ src, alt, label, onClose }: PreviewLightboxProps) {
+export function PreviewLightbox({ src, alt, format, label, onClose }: PreviewLightboxProps) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose();
@@ -32,7 +35,12 @@ export function PreviewLightbox({ src, alt, label, onClose }: PreviewLightboxPro
             Close
           </button>
         </div>
-        <img className="preview-lightbox-media" src={src} alt={alt} />
+        <OutputMedia
+          className="preview-lightbox-media"
+          src={src}
+          format={format}
+          alt={alt}
+        />
       </div>
     </div>
   );

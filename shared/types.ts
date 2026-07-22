@@ -1,4 +1,4 @@
-export type OutputFormat = 'gif' | 'webp';
+export type OutputFormat = 'gif' | 'webp' | 'mp4';
 
 export type QualityPreset = 'low-size' | 'balanced' | 'high-quality' | 'custom';
 
@@ -9,6 +9,7 @@ export interface ConversionSettings {
   width: number;
   gifQuality: number;
   webpQuality: number;
+  videoCrf: number;
   cornerRadius: number;
   outputDir: string;
   startTime: number;
@@ -56,6 +57,20 @@ export interface PreviewResponse {
   format: OutputFormat;
 }
 
+export interface SizeEstimateRequest {
+  inputPath: string;
+  settings: ConversionSettings;
+}
+
+export interface SizeEstimateResult {
+  format: OutputFormat;
+  bytes: number;
+}
+
+export interface SizeEstimateResponse {
+  estimates: SizeEstimateResult[];
+}
+
 export interface MediaSrcPayload {
   kind: 'url' | 'blob';
   url?: string;
@@ -64,17 +79,26 @@ export interface MediaSrcPayload {
 }
 
 export const DEFAULT_SETTINGS: ConversionSettings = {
-  formats: ['gif', 'webp'],
+  formats: ['gif', 'webp', 'mp4'],
   preset: 'balanced',
   fps: 15,
   width: 800,
   gifQuality: 3,
   webpQuality: 80,
+  videoCrf: 26,
   cornerRadius: 0,
   outputDir: '',
   startTime: 0,
   endTime: null,
 };
+
+export function isVideoOutput(format: OutputFormat): boolean {
+  return format === 'mp4';
+}
+
+export function supportsCornerRadius(format: OutputFormat): boolean {
+  return format === 'gif' || format === 'webp';
+}
 
 export interface DesktopApi {
   selectVideo: () => Promise<string | null>;
@@ -84,6 +108,7 @@ export interface DesktopApi {
   getMediaSrc: (filePath: string) => Promise<MediaSrcPayload>;
   getThumbnail: (filePath: string, width?: number) => Promise<MediaSrcPayload>;
   generatePreview: (request: PreviewRequest) => Promise<PreviewResponse>;
+  estimateSizes: (request: SizeEstimateRequest) => Promise<SizeEstimateResponse>;
   showInFolder: (filePath: string) => Promise<void>;
   onProgress: (callback: (progress: ConversionProgress) => void) => () => void;
 }
